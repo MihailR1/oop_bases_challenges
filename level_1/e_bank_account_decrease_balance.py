@@ -10,8 +10,23 @@
 
 
 class BankAccount:
-    pass  # код писать тут
+    def __init__(self, owner_full_name: str, balance: float):
+        self.owner_full_name = owner_full_name
+        self.balance = balance
+
+    def increase_balance(self, income: float):
+        self.balance += income
+
+    def decrease_balance(self, income: float):
+        new_balance = self.balance - income
+        if new_balance >= 0:
+            self.balance = new_balance
+        else:
+            raise ValueError
 
 
 if __name__ == '__main__':
-    pass  # код писать тут
+    bank_acc = BankAccount('Ivan Ivanov', 450.99)
+    bank_acc.decrease_balance(380)
+    print(bank_acc.balance)
+    bank_acc.decrease_balance(100)

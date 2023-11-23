@@ -25,6 +25,15 @@ class FoodProductMixin:
         return self.price > 10
 
 
-if __name__ == '__main__':
-    pass  # код писать тут
+class FoodProduct(Product, FoodProductMixin):
+    def get_product_info(self):
+        if self.is_premium_food():
+            return super().get_product_info() + f' (Premium)'
+        return super().get_product_info()
 
+
+if __name__ == '__main__':
+    food_prod_1 = FoodProduct('milk', 9)
+    food_prod_2 = FoodProduct('tomato', 240)
+    print(food_prod_1.get_product_info())
+    print(food_prod_2.get_product_info())

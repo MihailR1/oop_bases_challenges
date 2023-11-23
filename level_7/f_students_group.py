@@ -15,6 +15,10 @@ class StudentGroup:
         self.group_number = group_number
         self.grades = grades
 
+    def __add__(self, other: __class__):
+        if isinstance(other, self.__class__):
+            return sum(self.grades) + sum(other.grades)
+
 
 if __name__ == '__main__':
     first_group = StudentGroup(group_number=1, grades=[1, 4, 6, 3])
